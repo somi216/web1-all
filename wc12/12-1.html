@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            web1 wc12-1
+        </title>
+    </head>
+</html>
+<body>
+    <div id="dragsrc" style="display:block;">
+        <img id="html5" src="icon_html5.png" style="display: inline; width:150px;" draggable="true">
+        <img id="css3" src="icon_css3.png" style="display: inline; width:150px;" draggable="false">
+        <img id="js" src="icon_js.png" style="display: inline; width: 150px;">
+
+    </div>
+    <div id="dragprocess"></div>
+
+    <script type="text/javascript">
+        var src = document.getElementByld("dragsrc"),
+        srcld, i=0;
+        process=document.getElementByld("dragprocess");
+
+        src.ondragstart=function(e){
+            srcld=e.target.id;
+            process.innerHTML="start: "+srcld+"<br/>";
+
+        }
+        src.ondrag=function(e){
+            process.innerHTML="start: "+srcld+"<br/>drag: "+srcld+"["+(i++)+"]";
+
+        }
+        src.ondragend=function(e){
+            process.innerHTML="<br/>end: "+srcld+"<br/>";
+
+        }
+    </script>
+</body>

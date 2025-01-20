@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>드래그 앤 드롭 이미지</title>
+    <style>
+        #dropZone {
+            width: 300px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 20px auto;
+        }
+        .draggable {
+            width: 100px;
+            cursor: pointer;
+        }
+        #info {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DROP HERE</h1>
+    <div id="dropZone">이미지를 여기에 드롭하세요</div>
+    <div id="info"></div>
+
+    <div style="text-align: center;">
+        <img src="모자.jpg" alt="모자" class="draggable" draggable="true">
+        <img src="선글라스.png" alt="선글라스" class="draggable" draggable="true">
+        <img src="책.jpg" alt="책" class="draggable" draggable="true">
+        <img src="책가방.png" alt="가방" class="draggable" draggable="true">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const dropZone = document.getElementById('dropZone');
+            const info = document.getElementById('info');
+
+            document.querySelectorAll('.draggable').forEach(img => {
+                img.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', e.target.alt);
+                });
+            });
+
+            dropZone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                dropZone.style.background = '#f0f0f0';
+            });
+
+            dropZone.addEventListener('dragleave', function(e) {
+                dropZone.style.background = '#fff';
+            });
+
+            dropZone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                dropZone.style.background = '#fff';
+                const altText = e.dataTransfer.getData('text/plain');
+                info.textContent = `드롭한 이미지: ${altText}`;
+            });
+        });
+    </script>
+</body>
+</html>
+

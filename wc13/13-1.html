@@ -1,0 +1,69 @@
+
+<!doctype html>
+<html>
+<head> 
+    <title> wc13-1 로컬스토리지 예제 </title> 
+    <meta charset="utf-8"/>
+</head>
+<body onload="pageload();">
+    <h3>로컬 스토리지를 이용한 간단한 목록 작성</h3>
+  
+<div style="width:540px; height:45px; padding:8px; border:double">
+        이메일 주소&nbsp;입력<br>
+        성명: <input type="text" size="10" id="u_name">  &nbsp;
+		이메일: <input type="text" size="30" id="u_email">
+        &nbsp;<input type="button" value="추가" onclick="SaveItem()">
+</div>
+        <p style="margin:10px">이메일 목록 보기</p>
+<div style="background-color:#d0f0ff; width:540px; height:55px; padding:8px;">
+        성명선택: <select id="nameList" style="width:100px" onchange="viewContent()">
+                  </select> &nbsp;
+		이메일: <span id="emailAddr">&nbsp;</span> <br>
+        <input type="button" value="삭제" onclick="RemoveItem()" style="margin-top:8px">
+        <input type="button" value="전체삭제" onclick="ClearAll()">
+</div>
+	
+    <script type="text/javascript">
+    var localStorage = window.localStorage;               // 로컬 스토리지
+    var nameList = document.getElementById("nameList");
+    var emailAddr = document.getElementById("emailAddr");
+    var u_name = document.getElementById("u_name");
+    var u_email = document.getElementById("u_email");
+
+    if (!localStorage) {
+        alert("로컬스토리지를 지원하지 않습니다.");
+    }
+
+    function pageload() {   
+        nameList.innerHTML = "";    // 목록 clear
+        emailAddr.innerHTML = "";
+		// 스토리지의 데이터를 리스트에 추가
+        for (var i = 0; i <= localStorage.length - 1; i++) {  // 로컬 스토리지
+            var key = localStorage.key(i);
+            nameList.options[nameList.options.length] = new Option(key, key);
+        }
+    }
+
+    function SaveItem() {           // 스토리지에 저장
+        localStorage.setItem(u_name.value, u_email.value);     // 로컬 스토리지
+        pageload();
+    }
+
+    function RemoveItem() {         // 선택한 항목을 스토리지에서 삭제
+        var option_key = nameList.options[nameList.selectedIndex].value;
+        localStorage.removeItem(option_key);                // 로컬 스토리지
+        pageload();
+    }
+  
+    function ClearAll() {          // 스토리지의 데이터 모두 삭제
+        localStorage.clear();                                  // 로컬 스토리지
+        pageload();
+    }
+	
+    function viewContent() {       // 선택한 영화의 한줄소개 보기
+        var option_key = nameList.options[nameList.selectedIndex].value;
+        emailAddr.innerHTML = localStorage.getItem(option_key); // 로컬 스토리지
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숙명여대까지의 거리</title>
+</head>
+<body>
+    <h1>숙명여대까지의 거리</h1>
+    <p id="distance">거리를 계산 중...</p>
+    <script>
+        // 각도를 라디안으로 변환하는 함수
+        Number.prototype.toRad = function() {
+            return this * Math.PI / 180;
+        }
+
+        // 두 지점 간의 거리를 계산하는 함수 (Haversine 공식 사용)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            var R = 6371; // 지구 반지름 (단위: km)
+            var dLat = (lat2 - lat1).toRad();
+            var dLon = (lon2 - lon1).toRad();
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                    Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) *
+                    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
+
+        // 숙명여대 좌표
+        var sookmyungLat = 37.5459582;
+        var sookmyungLon = 126.9625;
+
+        // 현재 위치를 가져와서 거리 계산
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var currentLat = position.coords.latitude;
+                var currentLon = position.coords.longitude;
+                var distance = calculateDistance(currentLat, currentLon, sookmyungLat, sookmyungLon);
+                document.getElementById('distance').textContent = '숙명여대까지의 거리: ' + distance.toFixed(2) + ' km';
+            }, function(error) {
+                document.getElementById('distance').textContent = '위치를 가져올 수 없습니다.';
+            });
+        } else {
+            document.getElementById('distance').textContent = '이 브라우저에서는 위치 기능을 지원하지 않습니다.';
+        }
+    </script>
+</body>
+</html>

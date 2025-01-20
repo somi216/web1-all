@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 위치 지도</title>
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+        #info {
+            margin-top: 10px;
+        }
+    </style>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a205cc9729d03619e9c955fc4606146e"></script>
+    <script>
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var currentLat = position.coords.latitude;
+                    var currentLon = position.coords.longitude;
+                    var currentLocation = new kakao.maps.LatLng(currentLat, currentLon);
+
+                    var mapContainer = document.getElementById('map');
+                    var mapOption = {
+                        center: currentLocation,
+                        level: 3 // 지도의 확대 레벨
+                    };
+
+                    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                    var marker = new kakao.maps.Marker({
+                        position: currentLocation
+                    });
+
+                    marker.setMap(map);
+
+                    // 지도 확대 축소를 제어할 수 있는 줌 컨트롤 생성
+                    var zoomControl = new kakao.maps.ZoomControl();
+                    map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+                    // 지도 타입을 전환할 수 있는 지도 타입 컨트롤 생성
+                    var mapTypeControl = new kakao.maps.MapTypeControl();
+                    map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+                    // 이벤트 리스너 추가
+                    kakao.maps.event.addListener(map, 'center_changed', function() {
+                        displayEventInfo('center_changed', map.getCenter());
+                    });
+
+                    kakao.maps.event.addListener(map, 'zoom_changed', function() {
+                        displayEventInfo('zoom_changed', map.getLevel());
+                    });
+
+                    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+                        displayEventInfo('click', mouseEvent.latLng);
+                    });
+
+                    function displayEventInfo(eventType, eventInfo) {
+                        var infoDiv = document.getElementById('info');
+                        var infoContent = '<p>Event Type: ' + eventType + '</p>';
+
+                        if (eventType === 'center_changed') {
+                            infoContent += '<p>New Center: ' + eventInfo.toString() + '</p>';
+                        } else if (eventType === 'zoom_changed') {
+                            infoContent += '<p>New Zoom Level: ' + eventInfo + '</p>';
+                        } else if (eventType === 'click') {
+                            infoContent += '<p>Clicked Location: ' + eventInfo.toString() + '</p>';
+                        }
+
+                        infoDiv.innerHTML = infoContent;
+                    }
+                }, function(error) {
+                    document.getElementById('map').textContent = '위치를 가져올 수 없습니다.';
+                });
+            } else {
+                document.getElementById('map').textContent = '이 브라우저에서는 위치 기능을 지원하지 않습니다.';
+            }
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <h1>현재 위치 지도</h1>
+    <div id="map"></div>
+    <div id="info"></div>
+</body>
+</html>

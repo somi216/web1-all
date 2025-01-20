@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>현재 위치 지도</title>
+    <style>
+        #map {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+    <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a205cc9729d03619e9c955fc4606146e"></script>
+    <script>
+        function initMap() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var currentLat = position.coords.latitude;
+                    var currentLon = position.coords.longitude;
+                    var currentLocation = new kakao.maps.LatLng(currentLat, currentLon);
+
+                    var mapContainer = document.getElementById('map');
+                    var mapOption = {
+                        center: currentLocation,
+                        level: 3 // 지도의 확대 레벨
+                    };
+
+                    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+                    var marker = new kakao.maps.Marker({
+                        position: currentLocation
+                    });
+
+                    marker.setMap(map);
+                }, function(error) {
+                    document.getElementById('map').textContent = '위치를 가져올 수 없습니다.';
+                });
+            } else {
+                document.getElementById('map').textContent = '이 브라우저에서는 위치 기능을 지원하지 않습니다.';
+            }
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <h1>현재 위치 지도</h1>
+    <div id="map"></div>
+</body>

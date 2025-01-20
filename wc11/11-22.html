@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Text Changer</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <button id="changeTextButton">Click me to change text</button>
+
+    <script type="text/javascript">
+        // JavaScript 코드 작성
+        document.addEventListener('DOMContentLoaded', function(event) {
+            // 버튼 요소 선택
+            var changeTextButton = document.getElementById('changeTextButton');
+
+            // 버튼 클릭 이벤트 리스너
+            changeTextButton.addEventListener('click', function() {
+                // 사용자로부터 문자열을 입력 받음
+                var userInput = prompt('Enter the text to display on the button:');
+                
+                // 입력 받은 문자열을 버튼 텍스트로 설정
+                if (userInput !== null) {
+                    changeTextButton.textContent = userInput;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> wc11-9 Changing HTML Tag Contents </title>
+    </head>
+<body>
+
+<button id="b1">innerHTML</button>
+<button id="b2">innerText</button>
+<br/>
+<p id="text">This text will be dynamically changed</p>
+
+<script  type="text/javascript" >  
+    document.getElementById("b1").onmouseover = mouseover_innerHTML;
+    document.getElementById("b2").onmouseover = mouseover_innerText;
+
+    document.getElementById("b1").onmouseout = reset_text;
+    document.getElementById("b2").onmouseout = reset_text;
+
+    function mouseover_innerHTML() {
+        document.getElementById("text").innerHTML =
+                "<h1>Mouse cursor is over the innerHTML button</h1>";
+    }
+
+    function mouseover_innerText() {
+        document.getElementById("text").innerText =
+                "<h1>Mouse cursor is over the innerText button</h1>";
+    }
+
+    function reset_text() {
+        document.getElementById("text").innerHTML =
+                "This text will be dynamically changed";
+    }
+</script>
+ 
+</body>
+</html> 

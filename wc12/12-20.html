@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag Event</title>
+    <style>
+        #name {
+            font-size: 24px;
+            font-weight: bold;
+            display: inline-block;
+            user-select: none; /* Prevent default text selection */
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="name" draggable="true">김영은</div>
+    <div id="status">드래그 가능</div>
+
+    <script>
+        const nameElement = document.getElementById('name');
+        const statusElement = document.getElementById('status');
+        let dragCounter = 0;
+
+        nameElement.addEventListener('dragstart', (event) => {
+            dragCounter = 1;
+            statusElement.textContent = `드래그 시작[${dragCounter}]`;
+        });
+
+        nameElement.addEventListener('drag', (event) => {
+            if (event.clientX !== 0 && event.clientY !== 0) { // Ensure it's an actual drag movement
+                dragCounter++;
+                statusElement.textContent = `드래그 시작[${dragCounter}]`;
+            }
+        });
+
+        nameElement.addEventListener('dragend', (event) => {
+            statusElement.textContent = '드래그 가능';
+        });
+    </script>
+    </body>
+    </html>

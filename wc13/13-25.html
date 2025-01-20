@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="UTF-8">
+    <title>비디오 제어</title> 
+
+    <script type="text/javascript">
+        window.onload = function(){
+            var myVideo = document.getElementById("myvideo"),
+                playBtn = document.getElementById("playbtn"),
+                volumeCtrl = document.getElementById("volctrl"),
+                timeDiv = document.getElementById("time"),
+                seekBar = document.getElementById("seekbar"),
+                seekInput = document.getElementById("seekInput");
+
+            myVideo.addEventListener("canplay", function(){
+                alert("재생 가능합니다.");
+            });
+            myVideo.addEventListener("timeupdate", updateTime);
+            playBtn.addEventListener("click", play);
+            volumeCtrl.addEventListener("change", updateVolume);
+            seekBar.addEventListener("input", updateSeek);
+            seekInput.addEventListener("keydown", function(event) {
+                if (event.keyCode === 13) { // Enter key
+                    var time = parseFloat(seekInput.value);
+                    if (!isNaN(time) && time >= 0 && time <= myVideo.duration) {
+                        myVideo.currentTime = time;
+                    }
+                }
+            });
+
+            function updateTime(){
+                timeDiv.innerHTML = Math.floor(myVideo.currentTime) + "/" + Math.floor(myVideo.duration) + "(초)";
+                seekBar.value = myVideo.currentTime / myVideo.duration;
+                seekInput.value = Math.floor(myVideo.currentTime);
+            }
+
+            function play(){
+                if(myVideo.paused){
+                    playBtn.innerHTML = "일시정지";
+                    myVideo.play();
+                }else{
+                    playBtn.innerHTML = "재생";
+                    myVideo.pause();
+                }
+            }
+
+            function updateVolume() {
+                myVideo.volume = volumeCtrl.value;
+            }
+
+            function updateSeek() {
+                myVideo.currentTime = seekBar.value * myVideo.duration;
+            }
+        }
+    </script>
+</head>
+<body>
+    <video id="myvideo" controls width="500" src="http://webclass.me/html5_3e/ch13/nature.mp4"></video><br/>
+    <button id="playbtn">재생</button>
+    재생시간/총시간:&nbsp;<span id="time"></span><br>
+    볼륨:&nbsp;<input id="volctrl" type="range" max="1" step="any"><br>
+    재생위치:&nbsp;<input id="seekbar" type="range" min="0" max="1" step="any"><br>
+    재생위치 입력:&nbsp;<input id="seekInput" type="text">
+</body>
+</html>

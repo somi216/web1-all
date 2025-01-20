@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        // JavaScript 코드 작성
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // <div> 요소 선택
+            var contentDiv = document.getElementById('content');
+
+            // <p> 요소와 <h1> 요소 생성
+            var newContent = '<h1>Welcome to my Website</h1><p>This is a paragraph of text.</p>';
+
+            // innerHTML 속성을 이용해 <div> 요소에 추가
+            contentDiv.innerHTML = newContent;
+        });
+    </script>
+</body>
+</html>

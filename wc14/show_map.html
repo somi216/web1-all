@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> 현재 위치 지도상에 보여주기 </title>
+        <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=a205cc9729d03619e9c955fc4606146e">
+        </script>
+        <script type="text/javascript">
+            function showCurrentLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(getPosition);
+                }
+                else {
+                    document.write("지오로케이션이 지원되지 않습니다.");
+                }
+            }
+        
+            function getPosition(p) {
+                currentLat = p.coords.latitude;
+                currentLng = p.coords.longitude;
+                showKaKaoMap(currentLat, currentLng);
+            }
+            
+            function showKaKaoMap(lat, lng) {
+                maplevel = 4;
+                mapContainer = document.getElementById('map'),
+                mapOption = { center: new kakao.maps.LatLng(lat, lng), level: maplevel };
+        
+                map = new kakao.maps.Map(mapContainer, mapOption);
+        
+                markerPosition  = new kakao.maps.LatLng(lat, lng);
+                marker = new kakao.maps.Marker({position: markerPosition});
+                marker.setMap(map);
+            }
+            function getMyLocation() { 
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(myCallback);
+            } else {
+                alert("지오로케이션이 지원되지 않습니다.");
+            }
+            }
+            function myCallback(myPosition) {
+                var latitude = myPosition.coords.latitude,
+                longitude = myPosition.coords.longitude,
+                date = new Date(myPosition.timestamp),
+                parsedDate = date.toUTCString();
+                        
+                document.getElementById("display").innerHTML = '위치: 위도 ' + latitude + ', 경도 ' + longitude + '에 있습니다.';
+            }
+        
+        </script>
+    </head>
+    <body onload="showCurrentLocation();">
+        <div id="map" style="width: 100%; height: 350px;"></div>
+        <h3>단발성 위치정보 요청하기</h3>
+        <button onclick="getMyLocation();">위치정보 확인</button>
+        <div id="display">위치: </div>
+    </body>
+</html>

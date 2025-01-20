@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Color Changer</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Change Background Color</h1>
+    <button id="blueButton">Blue</button>
+    <button id="redButton">Red</button>
+
+    <script type="text/javascript">
+        // JavaScript 코드 작성
+        document.addEventListener('DOMContentLoaded', function(event) {
+            // 버튼 요소 선택
+            var blueButton = document.getElementById('blueButton');
+            var redButton = document.getElementById('redButton');
+
+            // 첫 번째 버튼 클릭
+            blueButton.addEventListener('click', function() {
+                document.body.style.backgroundColor = 'blue';
+            });
+
+            // 두 번째 버튼 클릭
+            redButton.addEventListener('click', function() {
+                document.body.style.backgroundColor = 'red';
+            });
+        });
+    </script>
+</body>
+</html>

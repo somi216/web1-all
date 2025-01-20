@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Button Event Tracker</title>
+    <style>
+        body {
+            text-align: center;
+            padding: 50px;
+        }
+        button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #eventLog {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .event-item {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="myButton">Hover and Click Me!</button>
+    <div id="eventLog"></div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var button = document.getElementById('myButton');
+            var eventLog = document.getElementById('eventLog');
+
+            var events = [
+                'mouseenter', 'mouseleave', 'mouseover', 'mouseout', 'mousedown', 'mouseup', 'click'
+            ];
+
+            events.forEach(function(eventName) {
+                button.addEventListener(eventName, function(event) {
+                    var newItem = document.createElement('div');
+                    newItem.className = 'event-item';
+                    newItem.textContent = 'Event: ' + eventName;
+                    eventLog.appendChild(newItem);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
