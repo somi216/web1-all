@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> HTML5 문서에 CSS 적용하기 </title> 
+        <meta charset="utf-8"/>
+        <meta authors="임순범 박희민"> 
+        <meta copyright="본 예제는 [HTML5 웹프로그래밍 입문] 교재를 이용한 교육에만 사용할 수 있음">
+        <style>
+            header {background-color: #82828248; margin: 1px; text-align: center;}
+            nav{border: 4px solid gray; width: 12%; float: left; margin-left: 10px; padding: 0px 10px;}
+            nav a{display: block; margin-left: 5px; margin-bottom: 5px; padding: 1px; text-decoration: none; font-weight: bold;}
+            article{border: 4px solid gray; width: 65%; margin: 3px; margin-left: 17%; padding: 10px;}
+            section{background-color: #d2d2d2; margin: 3px; margin-bottom: 10px; padding: 10px; height: 20vh; text-align: center;}
+            section ul{display: table; margin: 0 auto;} /* ul 가운데 정렬 */
+            aside{position: absolute; border: 4px solid gray; width: 10%; top: 17vh; right: 20px; padding: 5px; text-align: center; min-width: 120px;}
+            aside p{display: inline-block; border: 3px solid gray; background-color: #d2d2d280; width: 50%; 
+                padding: 30px 20px 30px 20px; font-weight: bold; min-width: 75px;}
+            footer{border-top: 4px solid gray; margin-top: 30px; padding: 10px; text-align: center; }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>[header]Bookstore</h1>
+        </header>
+        <nav>
+            <h3>[nav] 메뉴</h3>
+            <a href="#">-단행본</a>
+            <a href="#">-간행물</a>
+            <a href="#">-보고서</a>
+            <a href="#">-기타</a>
+        </nav>
+        <article> 
+            <h3>[article] 도서 안내</h3>
+            <section> 
+                <h3>[section] 베스트 셀러</h3>
+                <ul>
+                    <li>최윤철, 임순범, 컴퓨터와 IT기술의 이해</li>
+                    <li>임순범, 박희민, HTML5 웹프로그래밍 입문</li>
+                </ul>
+            </section>
+            <section>
+                <h3>[section] 추천 도서</h3>
+                <ul>
+                    <li>D. Morley, C. Parker, Understanding Computers 15th Ed.</li>	  
+                    <li>최윤철, 임순범, 소셜미디어 시대의 인터넷 이해</li>
+                </ul>
+            </section>
+        </article>
+        <aside>
+            <h3>[aside]이벤트</h3>
+            <p>📕<br/> 주목 도서</p>
+            <p>🖐<br/> 작가와의<br/>만남</p>
+        </aside>
+        <footer>
+            [footer]작성자 : 홍길동
+        </footer>
+    </body>
+</html>

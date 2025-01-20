@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
+        <title>반응형웹</title>
+        <style>
+            .divgroup {display: inline-block; border-style: dotted; margin-bottom: 3px; padding-left: 5px; padding-top: 3px; padding-bottom: 80px;}
+            @media all and (max-width: 600px) {.divgroup {background-color: white; width: 80%;}}
+            @media all and (min-width: 600px) and (max-width: 1000px) {.divgroup {background-color:dodgerblue; width: 40%;}}
+            @media all and (min-width: 1000px) {.divgroup {background-color:yellow; width: 30%;}}
+        </style>
+    </head>
+    <body>
+        <div class="divgroup">1번 영역</div>
+        <div class="divgroup">2번 영역</div>
+        <div class="divgroup">3번 영역</div>
+        <div class="divgroup">4번 영역</div>
+        <div class="divgroup">5번 영역</div>
+    </body>
+</html>
