@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> wc8-22 </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var a=prompt("첫번째 수를 입력하시오");
+            var b=prompt("+ - / * 중 연산 기호를 선택하시오");
+            var c=prompt("두번째 수를 입력하시오");
+
+            var result;
+            if(b=="+")
+                result=parseInt(a)+parseInt(c);
+            else if(b=="-")
+                result=parseInt(a)-parseInt(c);
+            else if(b=="/")
+                result=parseInt(a)/parseInt(c);
+            else if(b=="*")
+                result=parseInt(a)*parseInt(c);
+            else
+                document.write("올바른 연산기호를 입력하십시오.");
+
+            document.write(a+b+c+"="+result);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>wc9-21</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var today=new Date();
+            var y=today.getFullYear();
+            var m=today.getMonth()+1
+            var d=today.getDate();
+            var day=today.getDay();
+            var day2;
+
+            switch(day){
+                case 0:
+                    day2="일요일";
+                    break;
+                case 1:
+                    day2="월요일";
+                    break;
+                case 2:
+                    day2="화요일";
+                    break;
+                case 3:
+                    day2="수요일";
+                    break;
+                case 4:
+                    day2="목요일";
+                    break;
+                case 5:
+                    day2="금요일";
+                    break;
+                case 6:
+                    day2="토요일";
+                    break;
+            }
+
+            document.write("오늘 날짜: "+y+"년 "+m+"월 "+d+"일 "+day2);
+        </script>
+    </body>
+</html>

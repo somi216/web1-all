@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> wc10-4 태그이름 및 클래스로 DOM 접근 예제 </title> 
+    </head>
+<body>
+    <p> &lt;p&gt; 첫번째 태그 </p>
+    <p> &lt;p&gt; 두번째 태그 </p>
+    <p class="myclass"> myclass </p>
+    <input type="button" value="내용 바꾸기" onclick="changecontent();"/>
+    <script type="text/javascript">
+        function changecontent() {
+            p_elements = document.getElementsByTagName("p")
+            myclass_elements = document.getElementsByClassName("myclass")
+            p_elements[0].innerText = "<p> 첫번째 요소 내용 바꾸기";
+            p_elements[1].innerText = "<p> 두번째 요소 내용 바꾸기";
+            myclass_elements[0].innerText = "myclass 내용 바꾸기";
+        }
+    </script>
+</body>
+</html>

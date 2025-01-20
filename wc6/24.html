@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h3>설문조사</h3>
+    <form method="post" action="form_app.js">
+        <fieldset>
+            <legend>성별과 나이를 입력하세요.</legend>
+            <label for="gender"> 성별 :</label> 
+                <input type="radio" name="gender" value="male"/>남자
+                <input type="radio" name="gender" value="female" />여자 <br>
+            <label for="age">나이 :</label>
+            <input type="text" name="age" size="20" id="age">
+        </fieldset> <br>
+
+        <fieldset>
+            <legend>관심 분야를 선택하세요(1개 이상)</legend>
+                <input type="checkbox" name="field" value="digital" />디지털 콘텐츠
+                <input type="checkbox" name="field" value="web" />웹프로그래밍
+                <input type="checkbox" name="field" value="database" />데이터베이스
+                <input type="checkbox" name="field" value="elec" />전자출판
+        </fieldset> <br>
+
+        <fieldset>
+            <legend>다음 문항에 대해 5점 척도로 답하세요.</legend>
+                <p>본 세미나의 주제는 만족스러운가? 1 <input type="range" min="1" max="5" value="3"/>5</p>
+                <p>본 세미나의 초청 강사는 만족스러운가? 1 <input type="range" min="1" max="5" value="3"/>5</p>
+                <p>본 세미나의 강의 시간은 적당한가? 1 <input type="range" min="1" max="5" value="3"/>5</p>
+        </fieldset> <br>
+
+        <p>기타 의견 사항 <br>
+            <textarea name:"comment" cols="40" rows="5">의견을 적으세요</textarea></p>
+            
+        <input type="submit" value="확인"/>
+        <input type="reset" value="취소"/>
+    </form>
+</body>
+</html>

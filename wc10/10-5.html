@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title> wc10-5 getAttribute and setAttribute </title>
+    </head>
+<body>
+
+<a id="link" href="http://www.google.co.kr"> 링크 </a>
+<br/><br/>
+<input type="text" id="text"></input><button id="btn">href 속성 바꾸기</button>
+<br/><br/>    
+<p id = "curr_href"></p>
+
+<script type="text/javascript">
+    function changehref() {
+        new_href = "https://" + document.getElementById("text").value;
+        document.getElementById("link").setAttribute("href", new_href);
+        document.getElementById("link").innerText = new_href;
+        console.log(document.getElementById("link").innerText)
+    }
+    document.getElementById("btn").onclick = changehref;
+    document.getElementById("curr_href").innerText =
+        "기존 href = " + document.getElementById("link").getAttribute("href");
+</script>
+
+</body>
+</html>

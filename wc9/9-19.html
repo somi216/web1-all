@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> wc9-19 </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            var num1 = parseFloat(prompt("첫 번째 숫자를 입력하세요: "));
+            var num2 = parseFloat(prompt("두 번째 숫자를 입력하세요: "));
+            var num3 = parseFloat(prompt("세 번째 숫자를 입력하세요: "));
+
+            function max3(a, b, c) {
+                return Math.max(a, b, c);
+            }
+
+            function min3(a, b, c) {
+                return Math.min(a, b, c);
+            }
+
+            document.write("입력한 숫자들: " + num1 + ", " + num2 + ", " + num3 + "<br>");
+            document.write("최대값: " + max3(num1, num2, num3) + "<br>");
+            document.write("최소값: " + min3(num1, num2, num3) + "<br>");
+        </script>
+    </body>
+</html>

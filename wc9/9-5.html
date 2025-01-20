@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> wc9-5 </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+        
+        function print_array(a, name){
+            document.write("Size of array: "+a.length+"<br/>");
+            for(i=0;i<a.length;i++){
+                document.write(name+"["+i+"]: ");
+                if(typeof(a[i])=="string")
+                    document.write("\""+a[i]+"\"<br/>");
+                else
+                    document.write(a[i]+" <br/>");
+            }
+        }
+
+        var arr=new Array("zero","one",3,"25");
+
+        document.write("Original Array: <br/>");
+        print_array(arr,"arr");
+
+        arr.reverse();
+        document.write("<br/> After reverse: <br/>");
+        print_array(arr,"arr");
+
+        var str=arr.join(" = ");
+        document.write("<br/> After join: <br/>");
+        document.write("str: \""+str+"\"<br/>");
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            wc8-20-2
+        </title>
+    </head>
+    <body>
+        <script type="text/javascript">
+           var day = prompt("요일명을 한글 또는 영어로 입력하십시오:", "Monday 또는 월요일");
+            var result;
+
+            switch(day) {
+                case "일요일":
+                    result = "Sunday";
+                    break;
+                case "Sunday":
+                    result = "일요일";
+                    break;
+                case "월요일":
+                    result = "Monday";
+                    break;
+                case "Monday":
+                    result = "월요일";
+                    break;
+                case "화요일":
+                    result = "Tuesday";
+                    break;
+                case "Tuesday":
+                    result = "화요일";
+                    break;
+                case "수요일":
+                    result = "Wednesday";
+                    break;
+                case "Wednesday":
+                    result = "수요일";
+                    break;
+                case "목요일":
+                    result = "Thursday";
+                    break;
+                case "Thursday":
+                    result = "목요일";
+                    break;
+                case "금요일":
+                    result = "Friday";
+                    break;
+                case "Friday":
+                    result = "금요일";
+                    break;
+                case "토요일":
+                    result = "Saturday";
+                    break;
+                case "Saturday":
+                    result = "토요일";
+                    break;
+                default:
+                    result = "올바른 요일을 입력하세요.";
+            }
+
+            document.write(result);
+        </script>
+    </body>
+</html>
